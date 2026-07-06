@@ -41,6 +41,42 @@ content hashes. Pre-existing same-named files are never claimed or deleted.
 deletes only unmodified files it installed, strips its CLAUDE.md block, and
 always preserves generated artifacts (REPO-MAP.md, changes/, solutions/).
 
+## Quickstart: your first session
+
+1. Install (either path above), then open Claude Code in your repo.
+2. `/army:map` builds `.claude/army/REPO-MAP.md`: the one-time repo analysis
+   every agent reads instead of exploring. Takes a few minutes on a large
+   repo; commit the map to git so your whole team's sessions share it.
+   repo-analyst will also propose a `.claude/army/verify.sh`; accept it to
+   arm the done-gate (plugin mode blocks "done" while it fails).
+3. Give the army real work through the front door:
+
+   ```
+   /army:go users report the export button 500s on large reports
+   ```
+
+   Intake classifies it (this one is a bug), prints its dispatch decision,
+   and runs the matching flow: reproduce first, failing test, root-cause
+   fix, review. A feature request instead triggers the interview, spec,
+   plan-approval, and task-loop chain, and you approve at each gate.
+4. After a meaty effort, `/army:compound` writes what was learned to
+   `.claude/army/solutions/` so the next session starts smarter.
+
+## Which command when
+
+| You have...                          | Reach for                          |
+|--------------------------------------|-------------------------------------|
+| Anything, and you want it routed      | `/army:go <describe it>`           |
+| A new or changed repo                 | `/army:map`                        |
+| A feature idea worth a written spec   | `/army:spec <feature>`             |
+| An approved change to grind through   | `/army:loop`                       |
+| A diff you want gated before merge    | `/army:review`                     |
+| A finished effort worth learning from | `/army:compound`                   |
+
+`/army:go` subsumes the rest; the individual commands exist for when you
+want to enter the flow at a specific point. You can also address any agent
+directly ("use the k8s-architect to fix the OOMKills").
+
 ## The workflow
 
 One front door: give `/army:go <anything>` a problem statement and the
