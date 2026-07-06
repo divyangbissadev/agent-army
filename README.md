@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 26
-skills (17 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 27
+skills (18 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -165,7 +165,9 @@ documentation), built for shipping dashboard backends end to end.
 
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
 army-compound, army-cross-review, army-databricks (lakehouse operating
-protocol), army-graphql-e2e (GraphQL service delivery end to end),
+protocol), army-eng-docs (planning docs to the Google/Amazon/Stripe bar:
+Requirements, Design Docs, ADRs, One-Pagers, nine reference templates),
+army-graphql-e2e (GraphQL service delivery end to end),
 army-judge (rubric-scored LLM-as-judge
 for fuzzy outcomes), army-tool-design (agent-facing tool UX standards),
 army-repo-map, army-frugal-context, army-eng-wisdom (the distilled canon:

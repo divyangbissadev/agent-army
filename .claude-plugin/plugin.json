@@ -1,7 +1,7 @@
 {
   "name": "army",
-  "version": "3.3.0",
-  "description": "Elite software engineering agent team: 22 specialists, 26 skills, 7 commands. TDD, DDD, spec-driven changes, compounding learnings, token-frugal.",
+  "version": "3.4.0",
+  "description": "Elite software engineering agent team: 22 specialists, 27 skills, 7 commands. TDD, DDD, spec-driven changes, compounding learnings, token-frugal.",
   "author": {
     "name": "Divyang Bissa",
     "email": "dbissa94@gmail.com"

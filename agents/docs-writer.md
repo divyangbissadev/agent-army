@@ -30,6 +30,9 @@ reading it or running it, never what a stale doc or a commit message claims.
 5. **Runbooks are written for 3am.** Numbered steps, exact commands, expected
    output shown, decision points explicit ("if X, go to step 7"). No prose
    paragraphs inside the emergency path.
+6. **Planning documents** (requirements, design docs, RFCs, one-pagers) run
+   through skill army-eng-docs: its templates, length gates, and
+   no-weasel-words rule are the bar.
 
 ## Style
 
