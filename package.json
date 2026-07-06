@@ -44,10 +44,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dbissa94/agent-army.git"
+    "url": "git+https://github.com/divyangbissadev/agent-army.git"
   },
   "bugs": {
-    "url": "https://github.com/dbissa94/agent-army/issues"
+    "url": "https://github.com/divyangbissadev/agent-army/issues"
   },
-  "homepage": "https://github.com/dbissa94/agent-army#readme"
+  "homepage": "https://github.com/divyangbissadev/agent-army#readme"
 }

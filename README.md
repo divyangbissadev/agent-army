@@ -13,7 +13,7 @@ Two install paths, same content:
 ## Install as a Claude Code plugin (recommended)
 
 ```
-/plugin marketplace add dbissa94/agent-army
+/plugin marketplace add divyangbissadev/agent-army
 /plugin install army
 ```
 

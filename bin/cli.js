@@ -295,7 +295,7 @@ function cmdList() {
   }
   console.log(`\nskills:   ${skillNames().join(", ")}`);
   console.log(`commands: ${commandNames().map((c) => "/army:" + c.replace(/\.md$/, "")).join(", ")}`);
-  console.log(`\nAlso installable as a Claude Code plugin: /plugin marketplace add dbissa94/agent-army\n`);
+  console.log(`\nAlso installable as a Claude Code plugin: /plugin marketplace add divyangbissadev/agent-army\n`);
 }
 
 function cmdUpdate(args) {
@@ -380,7 +380,7 @@ Usage:
 Groups: ${Object.keys(GROUPS).join(", ")}, all (default: all)
 
 Or install as a Claude Code plugin instead of file copies:
-  /plugin marketplace add dbissa94/agent-army
+  /plugin marketplace add divyangbissadev/agent-army
   /plugin install army
 `);
 }
