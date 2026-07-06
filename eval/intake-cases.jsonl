@@ -1,0 +1,30 @@
+{"id":1,"statement":"The login page throws a 500 after we upgraded the auth library yesterday","expected":"bug"}
+{"id":2,"statement":"Production checkout is down, customers cannot pay right now","expected":"incident"}
+{"id":3,"statement":"Add CSV export to the reports screen","expected":"feature"}
+{"id":4,"statement":"Fix the typo in the welcome email subject line","expected":"small-change"}
+{"id":5,"statement":"Why does the worker process restart every hour?","expected":"question"}
+{"id":6,"statement":"Set up a canary deploy for the API service","expected":"ops"}
+{"id":7,"statement":"Write a runbook for the on-call rotation","expected":"docs"}
+{"id":8,"statement":"Make the app better","expected":"ambiguous"}
+{"id":9,"statement":"Users report their profile photo disappears after editing their bio","expected":"bug"}
+{"id":10,"statement":"We need something like Notion's slash commands","expected":"ambiguous"}
+{"id":11,"statement":"Add rate limiting to the public API","expected":"feature"}
+{"id":12,"statement":"The nightly ETL has been silently writing duplicate rows since Monday","expected":"bug"}
+{"id":13,"statement":"Should we use Postgres or DynamoDB for the session store?","expected":"question"}
+{"id":14,"statement":"Migrate CI from Jenkins to GitHub Actions","expected":"ops"}
+{"id":15,"statement":"Update the README quickstart, it still shows the old CLI flags","expected":"docs"}
+{"id":16,"statement":"Extract the pricing rules into a domain module without changing behavior","expected":"refactor"}
+{"id":17,"statement":"Add a dark mode toggle to settings","expected":"feature"}
+{"id":18,"statement":"kubectl shows ImagePullBackOff on the payments pod in prod and orders are failing","expected":"incident"}
+{"id":19,"statement":"Bump the copyright year in the footer","expected":"small-change"}
+{"id":20,"statement":"How does the caching layer decide what to evict?","expected":"question"}
+{"id":21,"statement":"Clean up the dead feature flags left over from last quarter","expected":"refactor"}
+{"id":22,"statement":"Support single sign-on with Okta","expected":"feature"}
+{"id":23,"statement":"Tests are flaky on CI but pass locally","expected":"bug"}
+{"id":24,"statement":"Document the public REST API","expected":"docs"}
+{"id":25,"statement":"Terraform apply keeps failing on the staging workspace","expected":"ops"}
+{"id":26,"statement":"I want the dashboard to feel faster","expected":"ambiguous"}
+{"id":27,"statement":"Change the default page size from 20 to 50","expected":"small-change"}
+{"id":28,"statement":"Fix the login bug and then add remember-me","expected":"bug"}
+{"id":29,"statement":"Compare our retry strategy with what Stripe recommends","expected":"question"}
+{"id":30,"statement":"Rewrite the OrderService because the code is ugly","expected":"refactor"}

@@ -1,0 +1,44 @@
+{
+  "name": "@dbissa/agent-army",
+  "version": "3.0.0",
+  "description": "Elite pluggable team of software engineering agents, skills, and commands for Claude Code. TDD, DDD, spec-driven changes, compounding learnings, token-frugal. Installs via npx or as a Claude Code plugin.",
+  "bin": {
+    "agent-army": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "agents",
+    "skills",
+    "commands",
+    "hooks",
+    "scripts",
+    "army",
+    ".claude-plugin",
+    "README.md",
+    "THIRD-PARTY-NOTICES.md",
+    "eval"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "eval:list": "node scripts/score-intake.mjs list",
+    "eval:score": "node scripts/score-intake.mjs score"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude-code",
+    "agents",
+    "subagents",
+    "skills",
+    "plugin",
+    "tdd",
+    "ddd",
+    "spec-driven",
+    "agentic-workflow",
+    "code-review",
+    "orchestration"
+  ],
+  "author": "Divyang Bissa <dbissa94@gmail.com>",
+  "license": "MIT"
+}

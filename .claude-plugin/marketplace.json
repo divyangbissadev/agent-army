@@ -1,0 +1,14 @@
+{
+  "name": "agent-army",
+  "owner": {
+    "name": "Divyang Bissa",
+    "email": "dbissa94@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "agent-army",
+      "source": "./",
+      "description": "Elite software engineering agent team: 19 specialists, 22 skills, 7 commands. TDD, DDD, spec-driven changes, compounding learnings, token-frugal."
+    }
+  ]
+}
