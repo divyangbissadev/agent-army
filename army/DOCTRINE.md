@@ -95,6 +95,8 @@ Intake estimates difficulty (routine or hard) alongside type:
   floor for process roles, not the ceiling for hard work.
 - High-stakes diffs (security, data, hard to reverse) escalate review to
   cross-vendor (skill army-cross-review).
+- Fuzzy outcomes (docs, plans, research answers) get a rubric-scored blind
+  judge (skill army-judge); anything a test can check gets the test instead.
 
 ## Frugal context rules
 

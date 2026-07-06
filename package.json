@@ -1,6 +1,6 @@
 {
   "name": "@dbissa/agent-army",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Elite pluggable team of software engineering agents, skills, and commands for Claude Code. TDD, DDD, spec-driven changes, compounding learnings, token-frugal. Installs via npx or as a Claude Code plugin.",
   "bin": {
     "agent-army": "bin/cli.js"
@@ -21,7 +21,8 @@
   "scripts": {
     "test": "node --test test/*.test.js",
     "eval:list": "node scripts/score-intake.mjs list",
-    "eval:score": "node scripts/score-intake.mjs score"
+    "eval:score": "node scripts/score-intake.mjs score",
+    "e2e": "node scripts/run-e2e.mjs list"
   },
   "engines": {
     "node": ">=18"

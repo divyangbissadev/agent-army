@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 19 specialist agents, 22
-skills (13 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 19 specialist agents, 24
+skills (15 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -103,10 +103,11 @@ current framework APIs against live docs before writing code, since that
 ecosystem churns monthly.
 
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
-army-compound, army-cross-review, army-repo-map, army-frugal-context,
-army-eng-wisdom (the distilled canon: Kleppmann, Ousterhout, Beck, Evans,
-Nygard, Fowler, Feathers, Bloch, Forsgren), army-review-standards,
-army-system-design, army-docs-standards.
+army-compound, army-cross-review, army-judge (rubric-scored LLM-as-judge
+for fuzzy outcomes), army-tool-design (agent-facing tool UX standards),
+army-repo-map, army-frugal-context, army-eng-wisdom (the distilled canon:
+Kleppmann, Ousterhout, Beck, Evans, Nygard, Fowler, Feathers, Bloch,
+Forsgren), army-review-standards, army-system-design, army-docs-standards.
 
 Pocock pack (vendored from [mattpocock/skills](https://github.com/mattpocock/skills),
 MIT, namespaced `mp-` to avoid collisions, see THIRD-PARTY-NOTICES.md):
@@ -125,11 +126,21 @@ gates, mp skills win for discovery.
 
 The workflow is measured and enforced, not just prompted:
 
-- **Evals**: `eval/intake-cases.jsonl` holds 30 labeled problem statements.
-  `npm run eval:list` prints them unlabeled; have a fresh session classify
-  each with the army-intake rubric, then `npm run eval:score answers.jsonl`
-  grades deterministically with an 85% gate. Run before shipping any change
-  to the intake skill or doctrine routing.
+- **Routing evals**: `eval/intake-cases.jsonl` holds 30 labeled problem
+  statements. `npm run eval:list` prints them unlabeled; have a fresh
+  session classify each with the army-intake rubric, then
+  `npm run eval:score answers.jsonl` grades deterministically with an 85%
+  gate. Run before shipping any change to the intake skill or routing.
+- **Outcome evals**: `npm run e2e` lists fixture tasks (a bug fix, a
+  test-first feature, a code question). `run-e2e.mjs prepare` copies the
+  fixture, the agent under test works TASK.md, and `run-e2e.mjs check`
+  delivers a deterministic verdict: green suites with original assertions
+  intact, requirement cases plus TDD evidence, or an untouched tree for
+  question tasks. Cheating (weakened tests, missing tests, drive-by edits)
+  fails. Fuzzy outcomes hand off to a RUBRIC.md scored via army-judge.
+- **LLM-as-judge**: the army-judge skill scores what tests cannot (docs,
+  plans, explanations) against written rubrics with anchored scales,
+  quoted-evidence requirements, and blind fresh-context judges.
 - **Telemetry**: intake decisions, loop exits, verify-hook blocks, and
   discovered misroutes append to `.claude/army/telemetry.jsonl` via
   `log-dispatch.mjs`. Retros read it; repeated misroutes become new eval
