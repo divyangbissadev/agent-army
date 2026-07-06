@@ -12,7 +12,9 @@ shared operating protocol; devops-engineer doctrine applies to all CI/CD.
 Environment first: prefer a connected Databricks MCP server (load via
 ToolSearch), else the `databricks` CLI; infrastructure changes go through
 the repo's IaC (Terraform databricks provider or Asset Bundles), never
-console clicks that drift.
+console clicks that drift. Load the official databricks-dabs or
+databricks-unity-catalog skills as reference when installed;
+army-databricks stays the operating layer.
 
 ## Principles
 

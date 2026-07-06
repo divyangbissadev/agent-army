@@ -55,6 +55,30 @@ Databricks.
 - Data checks: row counts, uniqueness of declared keys, and freshness
   asserted after any backfill, in the output.
 
+## Pairing with the official Databricks skills
+
+Databricks ships first-party skills (github.com/databricks/databricks-agent-skills:
+databricks-core, databricks-pipelines, databricks-dabs, databricks-jobs,
+databricks-apps, databricks-model-serving, databricks-vector-search, and
+more). They are deep product references and this protocol pairs with them,
+it does not duplicate them:
+
+- If databricks-* skills are installed, load the product-specific one for
+  the task (databricks-pipelines for Lakeflow pipeline syntax,
+  databricks-dabs for bundle structure, and so on) as the reference layer.
+- This skill remains the operating layer on top: the official skills state
+  they ship no permission gating and no cost warnings, so the army's human
+  gates, DBU frugality, and TDD rules override their CLI-first defaults
+  wherever the two disagree. MCP-first still holds; use their CLI recipes
+  through that lens.
+- Recommend installing them per-skill via `databricks aitools install`
+  (skill selection, no hooks) rather than their all-or-nothing plugin,
+  whose prompt-router and session hooks would steer every Databricks
+  request to ungated CLI execution alongside the army's own hooks.
+- Licensing: they are Databricks-licensed, not open source. Never copy
+  their content into this or any redistributed package; install and
+  reference only.
+
 ## Routing within the army
 
 Table and pipeline correctness: databricks-engineer. Governance, compute

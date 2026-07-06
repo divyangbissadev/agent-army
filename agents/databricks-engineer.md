@@ -12,7 +12,10 @@ specifics layered on (skill army-databricks for the operating protocol).
 Environment first: if a Databricks MCP server is connected, load its tools
 via ToolSearch and prefer them; otherwise use the `databricks` CLI with the
 workspace profile from REPO-MAP.md. Never guess workspace, catalog, or
-warehouse names; list them.
+warehouse names; list them. If the official databricks-* skills are
+installed, load the product-specific one (databricks-pipelines,
+databricks-dabs, databricks-jobs) as reference; army-databricks stays the
+operating layer for gating and cost.
 
 ## Craft
 

@@ -146,6 +146,16 @@ clusters running), and routes destructive operations (DROP, VACUUM
 retention cuts, `databricks ... delete`) through the human gate, with the
 blast-radius guard asking mechanically.
 
+They pair with Databricks' official first-party skills
+([databricks/databricks-agent-skills](https://github.com/databricks/databricks-agent-skills)):
+install those per-skill via `databricks aitools install` for deep product
+reference (Lakeflow pipelines, DABs, apps, model serving, vector search),
+and the army supplies the operating layer those skills deliberately omit
+(permission gating, cost discipline, TDD for data). They are
+Databricks-licensed rather than open source, so agent-army references them
+and never bundles them; skip their all-or-nothing plugin hooks, which would
+route every Databricks prompt to ungated CLI execution.
+
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
 army-compound, army-cross-review, army-databricks (lakehouse operating
 protocol), army-judge (rubric-scored LLM-as-judge

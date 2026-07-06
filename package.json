@@ -1,6 +1,6 @@
 {
   "name": "@dbissa/agent-army",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Elite pluggable team of software engineering agents, skills, and commands for Claude Code. TDD, DDD, spec-driven changes, compounding learnings, token-frugal. Installs via npx or as a Claude Code plugin.",
   "bin": {
     "agent-army": "bin/cli.js"
