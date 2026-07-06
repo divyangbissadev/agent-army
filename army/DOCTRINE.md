@@ -37,6 +37,7 @@ cannot spawn agents, so all routing happens in the main session.
 | Feature-scale planning      | army-chief                                 |
 | UI, components, CSS, a11y   | frontend-architect (+ typescript-pro)      |
 | API, services, persistence  | backend-engineer (+ language pro)          |
+| GraphQL schemas, gateways   | graphql-architect (army-graphql-e2e e2e)   |
 | Business rules, invariants  | domain-modeler, then backend-engineer      |
 | Pipelines, ETL, warehouses  | data-engineer                              |
 | Databricks, Spark, Delta, UC| databricks-engineer / databricks-platform  |
@@ -102,8 +103,7 @@ Intake estimates difficulty (routine or hard) alongside type:
 
 Full protocol: skill army-frugal-context. Headlines: REPO-MAP.md before
 filesystem, search before read, signatures before bodies, deltas as output,
-tool-call budgets (trivial under 10, medium under 25), one clarifying
-question maximum, accuracy always wins over token savings.
+tool-call budgets, one clarifying question max, accuracy beats token savings.
 
 ## Trust boundaries
 

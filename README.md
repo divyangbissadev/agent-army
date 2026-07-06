@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 21 specialist agents, 25
-skills (16 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 26
+skills (17 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -127,7 +127,7 @@ the agent from finishing while that script fails.
 | Group        | Agents                                                                     |
 |--------------|----------------------------------------------------------------------------|
 | core         | army-chief, repo-analyst, code-reviewer, docs-writer                       |
-| engineering  | frontend-architect, backend-engineer, domain-modeler, data-engineer, ai-engineer, qa-engineer, security-engineer |
+| engineering  | frontend-architect, backend-engineer, domain-modeler, data-engineer, ai-engineer, graphql-architect, qa-engineer, security-engineer |
 | languages    | golang-pro, python-pro, java-architect, typescript-pro                     |
 | platform     | devops-engineer, k8s-architect                                             |
 | databricks   | databricks-engineer, databricks-platform                                   |
@@ -156,9 +156,17 @@ Databricks-licensed rather than open source, so agent-army references them
 and never bundles them; skip their all-or-nothing plugin hooks, which would
 route every Databricks prompt to ungated CLI execution.
 
+graphql-architect owns schemas as domain contracts, N+1 and cost-limit
+discipline, and federation judgment; its army-graphql-e2e skill is a full
+delivery route map (domain model, SDL contract, walking skeleton, resolver
+loop with read models for dashboards, hostile-query security phase,
+cloud-agnostic DevOps with a portability rule, and generated-from-SDL
+documentation), built for shipping dashboard backends end to end.
+
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
 army-compound, army-cross-review, army-databricks (lakehouse operating
-protocol), army-judge (rubric-scored LLM-as-judge
+protocol), army-graphql-e2e (GraphQL service delivery end to end),
+army-judge (rubric-scored LLM-as-judge
 for fuzzy outcomes), army-tool-design (agent-facing tool UX standards),
 army-repo-map, army-frugal-context, army-eng-wisdom (the distilled canon:
 Kleppmann, Ousterhout, Beck, Evans, Nygard, Fowler, Feathers, Bloch,
