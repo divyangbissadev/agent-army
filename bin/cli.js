@@ -4,11 +4,11 @@
  * commands into any repo.
  *
  * Usage:
- *   npx @dbissa/agent-army init [--dir <path>] [--only <groups>] [--force]
- *   npx @dbissa/agent-army list
- *   npx @dbissa/agent-army update [--dir <path>] [--force]
- *   npx @dbissa/agent-army remove [--dir <path>]
- *   npx @dbissa/agent-army help | version
+ *   npx @divyangbissadev/agent-army init [--dir <path>] [--only <groups>] [--force]
+ *   npx @divyangbissadev/agent-army list
+ *   npx @divyangbissadev/agent-army update [--dir <path>] [--force]
+ *   npx @divyangbissadev/agent-army remove [--dir <path>]
+ *   npx @divyangbissadev/agent-army help | version
  *
  * Groups: core, engineering, languages, platform, product, all (default: all)
  *
@@ -304,7 +304,7 @@ function cmdUpdate(args) {
   const claudeDir = path.join(args.dir, ".claude");
   const manifest = loadManifest(claudeDir);
   if (!manifest) {
-    console.error("No agent-army install found here. Run: npx @dbissa/agent-army init");
+    console.error("No agent-army install found here. Run: npx @divyangbissadev/agent-army init");
     process.exit(1);
   }
   if (manifest.corrupt) {
@@ -373,11 +373,11 @@ function cmdHelp() {
 agent-army v${VERSION}: elite Claude Code engineering agents, skills, and commands.
 
 Usage:
-  npx @dbissa/agent-army init   [--dir <path>] [--only <groups>] [--force]
-  npx @dbissa/agent-army list
-  npx @dbissa/agent-army update [--dir <path>] [--force]
-  npx @dbissa/agent-army remove [--dir <path>]
-  npx @dbissa/agent-army help | version
+  npx @divyangbissadev/agent-army init   [--dir <path>] [--only <groups>] [--force]
+  npx @divyangbissadev/agent-army list
+  npx @divyangbissadev/agent-army update [--dir <path>] [--force]
+  npx @divyangbissadev/agent-army remove [--dir <path>]
+  npx @divyangbissadev/agent-army help | version
 
 Groups: ${Object.keys(GROUPS).join(", ")}, all (default: all)
 

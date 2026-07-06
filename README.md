@@ -23,16 +23,16 @@ bootstrap into every session, so the workflow self-triggers.
 ## Install into a repo with npx (file copies, shared via git)
 
 ```bash
-npx @dbissa/agent-army init          # after npm publish
+npx @divyangbissadev/agent-army init          # from the npm registry
 npx /path/to/agent-army init         # from a local clone, works today
 ```
 
 ```bash
-npx @dbissa/agent-army init --only core,languages   # subset of groups
-npx @dbissa/agent-army init --dir ../other-repo     # install elsewhere
-npx @dbissa/agent-army list                          # roster
-npx @dbissa/agent-army update                        # refresh; skips files you modified
-npx @dbissa/agent-army remove                        # clean uninstall
+npx @divyangbissadev/agent-army init --only core,languages   # subset of groups
+npx @divyangbissadev/agent-army init --dir ../other-repo     # install elsewhere
+npx @divyangbissadev/agent-army list                          # roster
+npx @divyangbissadev/agent-army update                        # refresh; skips files you modified
+npx @divyangbissadev/agent-army remove                        # clean uninstall
 ```
 
 Safety model: a manifest records only files the tool actually wrote, with
