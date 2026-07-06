@@ -53,6 +53,8 @@ process.stdin.on("end", () => {
     if (/^kubectl\b/.test(s) && /\bdelete\b/.test(s))
       out("kubectl delete removes live resources");
     if (/^terraform\s+destroy\b/.test(s)) out("terraform destroy tears down infrastructure");
+    if (/^databricks\b/.test(s) && /\b(delete|rm|permanent-delete|purge)\b/.test(s))
+      out("databricks delete removes workspace resources");
     if (/^(npm|cargo)\s+publish\b/.test(s)) out("publishing is outward-facing and hard to retract");
   }
   process.stdout.write("");

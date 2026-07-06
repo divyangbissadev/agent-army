@@ -41,6 +41,7 @@ const GROUPS = {
   ],
   languages: ["golang-pro", "python-pro", "java-architect", "typescript-pro"],
   platform: ["devops-engineer", "k8s-architect"],
+  databricks: ["databricks-engineer", "databricks-platform"],
   product: ["product-manager", "scrum-master"],
 };
 

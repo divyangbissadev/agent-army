@@ -9,9 +9,9 @@ cannot spawn agents, so all routing happens in the main session.
 
 0. **Intake first.** Every request passes triage (skill army-intake, command
    /army:go): classify it (bug, incident, feature, small change, refactor,
-   question, ops, docs, ambiguous), judge stakes and difficulty, print the
-   dispatch decision, log it (see Telemetry), then commit to that flow. The
-   wrong flow is the most expensive mistake available.
+   question, ops, docs, ambiguous), judge stakes and difficulty, print and
+   log the dispatch decision, then commit to that flow. The wrong flow is
+   the most expensive mistake available.
 1. **Scale the ceremony to the change.**
    - Trivial (single file, no behavior change): just do it, run the tests.
    - Small (one behavior): TDD loop plus code-reviewer on the diff.
@@ -39,6 +39,7 @@ cannot spawn agents, so all routing happens in the main session.
 | API, services, persistence  | backend-engineer (+ language pro)          |
 | Business rules, invariants  | domain-modeler, then backend-engineer      |
 | Pipelines, ETL, warehouses  | data-engineer                              |
+| Databricks, Spark, Delta, UC| databricks-engineer / databricks-platform  |
 | LLM apps, agents, RAG, evals| ai-engineer                                |
 | CI/CD, releases, IaC        | devops-engineer                            |
 | Containers, K8s, networking | k8s-architect                              |
@@ -88,11 +89,10 @@ Intake estimates difficulty (routine or hard) alongside type:
   get the strongest available model, and for correctness-critical logic, two
   independent solves compared before committing (disagreement marks exactly
   where a deciding test is needed).
-- Escalation ladder: attempt, verify mechanically (tests, validator), and
-  only escalate model tier or add samples on verified failure, never on
-  vibes. Mechanism: the dispatching session passes a model override on the
-  Agent call where the harness supports it; agent-file model pins are the
-  floor for process roles, not the ceiling for hard work.
+- Escalation ladder: attempt, verify mechanically, escalate model tier or
+  add samples only on verified failure, never on vibes. Mechanism: the
+  dispatching session passes a model override on the Agent call; agent
+  model pins are a floor for process roles, not a ceiling for hard work.
 - High-stakes diffs (security, data, hard to reverse) escalate review to
   cross-vendor (skill army-cross-review).
 - Fuzzy outcomes (docs, plans, research answers) get a rubric-scored blind
@@ -195,5 +195,5 @@ Check silently: `command -v gnhf no-mistakes lavish-axi`.
 
 ## Writing style (all prose)
 
-No em-dashes anywhere: use a comma, colon, parentheses, or split the
-sentence. Plain sentences over bullet spam. Say the risky thing first.
+No em-dashes anywhere: comma, colon, parentheses, or split the sentence.
+Plain sentences over bullet spam. Say the risky thing first.

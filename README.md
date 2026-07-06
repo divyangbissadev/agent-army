@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 19 specialist agents, 24
-skills (15 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 21 specialist agents, 25
+skills (16 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -130,6 +130,7 @@ the agent from finishing while that script fails.
 | engineering  | frontend-architect, backend-engineer, domain-modeler, data-engineer, ai-engineer, qa-engineer, security-engineer |
 | languages    | golang-pro, python-pro, java-architect, typescript-pro                     |
 | platform     | devops-engineer, k8s-architect                                             |
+| databricks   | databricks-engineer, databricks-platform                                   |
 | product      | product-manager, scrum-master                                              |
 
 The ai-engineer deserves a note: it masters LangGraph, LangChain, LangSmith,
@@ -138,8 +139,16 @@ evals as the test suite, tracing from day one, and a standing rule to verify
 current framework APIs against live docs before writing code, since that
 ecosystem churns monthly.
 
+The databricks pair works MCP-first (a connected Databricks MCP server is
+preferred over the CLI), holds a hard cost-frugality line (read system
+tables before starting compute, sample before scanning, never leave
+clusters running), and routes destructive operations (DROP, VACUUM
+retention cuts, `databricks ... delete`) through the human gate, with the
+blast-radius guard asking mechanically.
+
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
-army-compound, army-cross-review, army-judge (rubric-scored LLM-as-judge
+army-compound, army-cross-review, army-databricks (lakehouse operating
+protocol), army-judge (rubric-scored LLM-as-judge
 for fuzzy outcomes), army-tool-design (agent-facing tool UX standards),
 army-repo-map, army-frugal-context, army-eng-wisdom (the distilled canon:
 Kleppmann, Ousterhout, Beck, Evans, Nygard, Fowler, Feathers, Bloch,

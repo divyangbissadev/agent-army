@@ -34,6 +34,9 @@ test("guard asks on dangerous command variants (bypass attempts)", () => {
     "kubectl  delete pod x",
     "terraform destroy -auto-approve",
     "npm publish",
+    "databricks jobs delete 123",
+    "databricks clusters permanent-delete abc",
+    "databricks workspace rm /Repos/old --recursive",
   ];
   for (const cmd of dangerous) {
     assert.ok(runGuard(cmd), `should ask: ${cmd}`);
@@ -51,6 +54,9 @@ test("guard passes benign commands including mentions in strings", () => {
     "rm -rf ./node_modules",
     "rm -rf /tmp/build-cache",
     "cat notes.md",
+    "databricks jobs list",
+    "databricks clusters get abc",
+    "echo databricks jobs delete is dangerous",
   ];
   for (const cmd of benign) {
     assert.ok(!runGuard(cmd), `should pass: ${cmd}`);
