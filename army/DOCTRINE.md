@@ -89,7 +89,10 @@ Intake estimates difficulty (routine or hard) alongside type:
   independent solves compared before committing (disagreement marks exactly
   where a deciding test is needed).
 - Escalation ladder: attempt, verify mechanically (tests, validator), and
-  only escalate model tier or add samples on verified failure, never on vibes.
+  only escalate model tier or add samples on verified failure, never on
+  vibes. Mechanism: the dispatching session passes a model override on the
+  Agent call where the harness supports it; agent-file model pins are the
+  floor for process roles, not the ceiling for hard work.
 - High-stakes diffs (security, data, hard to reverse) escalate review to
   cross-vendor (skill army-cross-review).
 
@@ -116,8 +119,9 @@ control or have read.
 Autonomy operates between checkpoints, never through them:
 
 1. **Intake question** when the stakes rule triggers, before any work.
-2. **Requirements grilling** (mp-grilling / mp-grill-with-docs) before any
-   feature spec; the human's answers define the change.
+2. **Requirements grilling** (mp-grilling / mp-grill-with-docs) before a
+   feature spec, skippable only when requirements are already fully pinned,
+   and the skip is stated; the human's answers define the change.
 3. **Proposal approval**: no implementation before the user approves
    proposal.md, recorded as a `Status: approved` line the validator checks.
 4. **Plan approval** before any slice dispatch.
@@ -175,7 +179,9 @@ Check silently: `command -v gnhf no-mistakes lavish-axi`.
 - Pocock pack (skills/mp-*, MIT): mp skills own discovery (interviews,
   prototypes, architecture scans, glossary upkeep); army skills own gates
   (TDD, review, debugging). mp-prototype output is exempt from TDD and is
-  never merged.
+  never merged. Vendored mp-* prose keeps its upstream style. Canonical
+  glossary: CONTEXT.md where the repo keeps one, else REPO-MAP.md's Domain
+  glossary; the other mirrors it, and domain briefs update the canonical one.
 
 ## Definition of done
 

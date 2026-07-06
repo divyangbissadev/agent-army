@@ -6,8 +6,9 @@ argument-hint: [change slug, defaults to the single active change]
 Target: $ARGUMENTS (if empty, look in .claude/army/changes/ for the single
 active change folder; if several are active, list them and ask which one).
 
-Gate first: run `node .claude/army/scripts/validate-change.mjs <folder>`;
-fix findings (including missing approval) before any task starts.
+Gate first: run `node .claude/army/scripts/validate-change.mjs <folder>
+--require-approval`; fix findings before any task starts. An unapproved
+proposal means stop and get the human gate, not proceed.
 
 Drive the ledger loop until done or genuinely blocked:
 
@@ -18,8 +19,9 @@ Drive the ledger loop until done or genuinely blocked:
    (army-tdd), minimum implementation, green with output quoted, tick the
    checkbox and commit in the same step. On unrecoverable mess, reset to the
    last task boundary instead of digging.
-3. Every third task or at any risky diff, run /army:review on the accumulated
-   diff; fix blockers before continuing.
+3. Interim review on the accumulated diff every third task or at any risky
+   diff; the mandatory doctrine gate is the whole-diff /army:review before
+   done. Fix blockers before continuing either way.
 4. Repeat from step 1. Between tasks, report one line only: task done, boxes
    remaining.
 5. Loop exit conditions, in priority order:
@@ -32,11 +34,9 @@ Drive the ledger loop until done or genuinely blocked:
      If the repo ships through no-mistakes, push via its pipeline rather
      than raw git.
 
-For unattended runs (user away or overnight): if gnhf is installed, offer to
-hand this same tasks.md ledger to it instead of looping in-session; gnhf
-iterates with commit-or-rollback per task and the ledger stays the shared
-source of truth. Parallel slices touching overlapping files get separate git
-worktrees.
+Unattended runs: if gnhf is installed, offer to hand this same tasks.md
+ledger to it (commit-or-rollback per task, ledger stays the source of
+truth). Parallel slices touching overlapping files get separate worktrees.
 
 Never tick a box ahead of reality, never weaken a test to keep the loop
 moving, and never exit silently: the last message names which exit happened,

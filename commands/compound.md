@@ -13,4 +13,8 @@ Run the army-compound skill on the work completed in this session:
 3. If any lesson is universal and durable, propose (do not apply without
    approval) a one-line addition to the repo's CLAUDE.md.
 4. If REPO-MAP.md was found wrong during the effort, fix those lines now.
-5. Report: notes written, map corrections, proposed CLAUDE.md line.
+5. Read `.claude/army/telemetry.jsonl` if present: repeated misroutes become
+   proposed intake eval cases (statement plus corrected type), and frequent
+   verify-blocks or failing loop-exits get a one-line diagnosis.
+6. Report: notes written, map corrections, telemetry patterns, proposed
+   CLAUDE.md line.

@@ -42,5 +42,6 @@ job is to make that easy.
 
 ## Dispute rule
 
-Author disagrees with a finding: one written round each, then army-chief
-decides with a one-line reason. No infinite threads.
+Author disagrees with a finding: one written round each, then the dispute
+goes to the user with both positions stated in two lines (doctrine human
+gate 6). No infinite threads.

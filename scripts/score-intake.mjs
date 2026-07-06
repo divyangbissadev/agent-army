@@ -6,6 +6,8 @@
 //     Prints "id<TAB>statement" WITHOUT labels. Have the model under test
 //     classify each line using ONLY the army-intake skill rubric, writing
 //     one JSON line per case to answers.jsonl: {"id":1,"type":"bug"}
+//     Mixed requests: answer with the FIRST flow per the rubric's
+//     decomposition rule (bugs before features).
 //   node scripts/score-intake.mjs score answers.jsonl
 //     Prints accuracy, per-type breakdown, and every miss. Exits 1 if
 //     accuracy is below the 0.85 gate, so eval regressions fail loudly.
@@ -37,17 +39,20 @@ if (cmd === "score") {
     console.error("usage: score-intake.mjs score <answers.jsonl>");
     process.exit(1);
   }
-  const answers = new Map(
-    fs
-      .readFileSync(file, "utf8")
-      .trim()
-      .split("\n")
-      .filter(Boolean)
-      .map((l) => {
-        const a = JSON.parse(l);
-        return [a.id, norm(a.type)];
-      })
-  );
+  const answers = new Map();
+  const answerLines = fs.readFileSync(file, "utf8").trim().split("\n").filter(Boolean);
+  for (const [i, l] of answerLines.entries()) {
+    let a;
+    try {
+      a = JSON.parse(l);
+    } catch {
+      console.error(`skipping malformed answer line ${i + 1}: ${l.slice(0, 60)}`);
+      continue;
+    }
+    if (answers.has(a.id))
+      console.error(`warning: duplicate answer for id ${a.id}; last one wins`);
+    answers.set(a.id, norm(a.type));
+  }
 
   let correct = 0;
   const misses = [];

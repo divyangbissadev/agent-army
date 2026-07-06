@@ -31,6 +31,10 @@ Bar for writing one:
 
 Keep each note under 30 lines. A note nobody reads compounds nothing.
 
+During retros, also read `.claude/army/telemetry.jsonl` when present:
+repeated misroutes become proposed intake eval cases, and frequent
+verify-blocks or failing loop-exits earn a one-line diagnosis in the retro.
+
 ## Reading (before the next effort)
 
 - army-chief and any planning step grep `.claude/army/solutions/` for the

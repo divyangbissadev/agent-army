@@ -65,6 +65,22 @@ test("checked tasks without approval fails (human gate enforced)", () => {
   assert.match(r.out, /human gate skipped/);
 });
 
+test("--require-approval fails an unapproved folder even with zero checked tasks", () => {
+  const dir = makeChange({
+    "proposal.md": "# Proposal\nWhy: x.\nWhat changes: y.\nWhat does not change: z.\n",
+  });
+  const r1 = runValidator(dir);
+  assert.equal(r1.code, 0, "without flag, awaiting approval is valid");
+  let failed = false;
+  try {
+    execFileSync("node", [VALIDATOR, dir, "--require-approval"], { encoding: "utf8" });
+  } catch (e) {
+    failed = true;
+    assert.match(String(e.stderr), /no work before approval/);
+  }
+  assert.ok(failed, "with flag, unapproved must fail");
+});
+
 test("malformed task line fails", () => {
   const r = runValidator(makeChange({ "tasks.md": "- [ ] 1. vague task\n" }));
   assert.equal(r.code, 1);

@@ -13,8 +13,10 @@ INPUT="$(cat)"
 VERIFY=".claude/army/verify.sh"
 [ -x "$VERIFY" ] || exit 0
 
-case "$INPUT" in
-  *'"stop_hook_active":true'*|*'"stop_hook_active": true'*)
+# Whitespace-insensitive match so a serializer change cannot break the guard.
+NORM=$(printf '%s' "$INPUT" | tr -d ' \n\t')
+case "$NORM" in
+  *'"stop_hook_active":true'*)
     exit 0
     ;;
 esac

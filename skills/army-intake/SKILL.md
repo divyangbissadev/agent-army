@@ -48,10 +48,14 @@ Beyond type, set the accuracy dial:
 State the decision in this compact form before doing anything:
 
 ```
-INTAKE: <type> | tier: <trivial|small|feature|incident> | difficulty: <routine|hard>
+INTAKE: <type> | tier: <trivial|small|feature|incident|direct> | difficulty: <routine|hard>
 Route: <agents involved, in order>
 Assumption: <the one-line interpretation you are committing to, if any>
 ```
+
+Tier mapping: trivial covers no-behavior edits regardless of type; direct
+covers question, ops, and docs (straight to the owning specialist); refactor
+takes small or feature by blast radius; everything else maps by name.
 
 Difficulty drives the doctrine's model strategy: hard means novel algorithms,
 tricky concurrency, or critical migrations, and earns the strongest model

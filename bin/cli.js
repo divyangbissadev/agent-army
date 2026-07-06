@@ -4,11 +4,11 @@
  * commands into any repo.
  *
  * Usage:
- *   npx agent-army init [--dir <path>] [--only <groups>] [--force]
- *   npx agent-army list
- *   npx agent-army update [--dir <path>] [--force]
- *   npx agent-army remove [--dir <path>]
- *   npx agent-army help | version
+ *   npx @dbissa/agent-army init [--dir <path>] [--only <groups>] [--force]
+ *   npx @dbissa/agent-army list
+ *   npx @dbissa/agent-army update [--dir <path>] [--force]
+ *   npx @dbissa/agent-army remove [--dir <path>]
+ *   npx @dbissa/agent-army help | version
  *
  * Groups: core, engineering, languages, platform, product, all (default: all)
  *
@@ -106,7 +106,10 @@ function loadManifest(claudeDir) {
   try {
     return JSON.parse(fs.readFileSync(p, "utf8"));
   } catch {
-    return null;
+    console.error(
+      `warning: ${MANIFEST_NAME} is corrupt; treating as fresh install (group scoping and file ownership will be rebuilt)`
+    );
+    return { corrupt: true, groups: [], files: {} };
   }
 }
 
@@ -126,7 +129,10 @@ function installFile(src, dest, { force, ownedHash }) {
   const content = fs.readFileSync(src);
   if (fs.existsSync(dest)) {
     const current = fs.readFileSync(dest);
-    if (sha256(current) === sha256(content)) return "installed"; // identical, safe to own
+    const identical = sha256(current) === sha256(content);
+    // A pre-existing file we never wrote stays the user's, even when it is
+    // byte-identical to our template; adopting it would let remove delete it.
+    if (identical) return ownedHash ? "installed" : "skipped-exists";
     if (ownedHash && sha256(current) === ownedHash) {
       fs.writeFileSync(dest, content);
       return "updated"; // we wrote it last, safe to refresh
@@ -135,7 +141,7 @@ function installFile(src, dest, { force, ownedHash }) {
   }
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.writeFileSync(dest, content);
-  return fs.existsSync(dest) ? "installed" : "installed";
+  return "installed";
 }
 
 /** Enumerate files under a template dir, relative paths. */
@@ -193,6 +199,12 @@ function ensureClaudeMdBlock(targetDir) {
   if (fs.existsSync(claudeMd)) {
     const content = fs.readFileSync(claudeMd, "utf8");
     if (content.includes(BEGIN_MARK)) {
+      if (!content.includes(END_MARK)) {
+        // Malformed (truncated or stray begin marker): repair by replacing
+        // the dangling marker with the full block.
+        fs.writeFileSync(claudeMd, content.replace(BEGIN_MARK, block));
+        return "repaired";
+      }
       const updated = content.replace(
         new RegExp(`${BEGIN_MARK}[\\s\\S]*?${END_MARK}`),
         block
@@ -212,9 +224,10 @@ function removeClaudeMdBlock(targetDir) {
   if (!fs.existsSync(claudeMd)) return;
   const content = fs.readFileSync(claudeMd, "utf8");
   if (!content.includes(BEGIN_MARK)) return;
-  const updated = content
-    .replace(new RegExp(`\\n?${BEGIN_MARK}[\\s\\S]*?${END_MARK}\\n?`), "\n")
-    .replace(/\n{3,}$/, "\n");
+  const updated = (content.includes(END_MARK)
+    ? content.replace(new RegExp(`\\n?${BEGIN_MARK}[\\s\\S]*?${END_MARK}\\n?`), "\n")
+    : content.replace(BEGIN_MARK, "")
+  ).replace(/\n{3,}$/, "\n");
   fs.writeFileSync(claudeMd, updated);
 }
 
@@ -282,15 +295,20 @@ function cmdList() {
   }
   console.log(`\nskills:   ${skillNames().join(", ")}`);
   console.log(`commands: ${commandNames().map((c) => "/army:" + c.replace(/\.md$/, "")).join(", ")}`);
-  console.log(`\nAlso installable as a Claude Code plugin: /plugin marketplace add <repo>\n`);
+  console.log(`\nAlso installable as a Claude Code plugin: /plugin marketplace add dbissa94/agent-army\n`);
 }
 
 function cmdUpdate(args) {
   const claudeDir = path.join(args.dir, ".claude");
   const manifest = loadManifest(claudeDir);
   if (!manifest) {
-    console.error("No agent-army install found here. Run: npx agent-army init");
+    console.error("No agent-army install found here. Run: npx @dbissa/agent-army init");
     process.exit(1);
+  }
+  if (manifest.corrupt) {
+    console.error("update proceeding as re-init due to corrupt manifest");
+    cmdInit({ ...args, only: null });
+    return;
   }
   // Prune files we own that no longer ship, only if unmodified.
   const agents = groupsToAgents(
@@ -353,17 +371,17 @@ function cmdHelp() {
 agent-army v${VERSION}: elite Claude Code engineering agents, skills, and commands.
 
 Usage:
-  npx agent-army init   [--dir <path>] [--only <groups>] [--force]
-  npx agent-army list
-  npx agent-army update [--dir <path>] [--force]
-  npx agent-army remove [--dir <path>]
-  npx agent-army help | version
+  npx @dbissa/agent-army init   [--dir <path>] [--only <groups>] [--force]
+  npx @dbissa/agent-army list
+  npx @dbissa/agent-army update [--dir <path>] [--force]
+  npx @dbissa/agent-army remove [--dir <path>]
+  npx @dbissa/agent-army help | version
 
 Groups: ${Object.keys(GROUPS).join(", ")}, all (default: all)
 
 Or install as a Claude Code plugin instead of file copies:
-  /plugin marketplace add <your-github>/agent-army
-  /plugin install agent-army
+  /plugin marketplace add dbissa94/agent-army
+  /plugin install army
 `);
 }
 

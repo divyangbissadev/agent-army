@@ -13,8 +13,8 @@ Two install paths, same content:
 ## Install as a Claude Code plugin (recommended)
 
 ```
-/plugin marketplace add <your-github>/agent-army
-/plugin install agent-army
+/plugin marketplace add dbissa94/agent-army
+/plugin install army
 ```
 
 Plugin mode adds a SessionStart hook that injects a compact doctrine
@@ -28,11 +28,11 @@ npx /path/to/agent-army init         # from a local clone, works today
 ```
 
 ```bash
-npx agent-army init --only core,languages   # subset of groups
-npx agent-army init --dir ../other-repo     # install elsewhere
-npx agent-army list                          # roster
-npx agent-army update                        # refresh; skips files you modified
-npx agent-army remove                        # clean uninstall
+npx @dbissa/agent-army init --only core,languages   # subset of groups
+npx @dbissa/agent-army init --dir ../other-repo     # install elsewhere
+npx @dbissa/agent-army list                          # roster
+npx @dbissa/agent-army update                        # refresh; skips files you modified
+npx @dbissa/agent-army remove                        # clean uninstall
 ```
 
 Safety model: a manifest records only files the tool actually wrote, with
@@ -102,10 +102,11 @@ evals as the test suite, tracing from day one, and a standing rule to verify
 current framework APIs against live docs before writing code, since that
 ecosystem churns monthly.
 
-Skills: army-tdd, army-ddd, army-debugging, army-spec, army-compound,
-army-repo-map, army-frugal-context, army-eng-wisdom (the distilled canon:
-Kleppmann, Ousterhout, Beck, Evans, Nygard, Fowler, Feathers, Bloch,
-Forsgren), army-review-standards, army-system-design, army-docs-standards.
+Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
+army-compound, army-cross-review, army-repo-map, army-frugal-context,
+army-eng-wisdom (the distilled canon: Kleppmann, Ousterhout, Beck, Evans,
+Nygard, Fowler, Feathers, Bloch, Forsgren), army-review-standards,
+army-system-design, army-docs-standards.
 
 Pocock pack (vendored from [mattpocock/skills](https://github.com/mattpocock/skills),
 MIT, namespaced `mp-` to avoid collisions, see THIRD-PARTY-NOTICES.md):

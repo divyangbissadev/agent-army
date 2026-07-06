@@ -50,8 +50,9 @@ or ran the command, (inferred) means deduced. Never present inference as fact.
   paths instead of quoting code.
 - Refresh mode: when a map exists, diff against `git log` since its commit sha
   and update only changed sections.
-- If `.claude/army/verify.sh` does not exist, create it from the verified
-  test, lint, and type-check commands (executable, exits non-zero on
-  failure, fast subset if the full suite is slow). It powers the army's
-  Stop-hook done-gate.
+- If `.claude/army/verify.sh` does not exist, draft one from the verified
+  test, lint, and type-check commands (exits non-zero on failure, fast
+  subset if the suite is slow) and include it in your summary as a proposal.
+  It powers the army's opt-in Stop-hook done-gate; the user or dispatching
+  session decides whether to create it, never you silently.
 - Final message: 5-line summary plus the map path. The map file is the product.

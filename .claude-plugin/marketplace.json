@@ -1,12 +1,13 @@
 {
   "name": "agent-army",
+  "description": "Marketplace for the army plugin: an elite, pluggable software engineering agent team for Claude Code.",
   "owner": {
     "name": "Divyang Bissa",
     "email": "dbissa94@gmail.com"
   },
   "plugins": [
     {
-      "name": "agent-army",
+      "name": "army",
       "source": "./",
       "description": "Elite software engineering agent team: 19 specialists, 22 skills, 7 commands. TDD, DDD, spec-driven changes, compounding learnings, token-frugal."
     }

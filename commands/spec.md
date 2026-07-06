@@ -17,12 +17,13 @@ or `.specify/`, use that tool's flow instead and tell the user why. Otherwise:
    for the invariants.
 2. Create `.claude/army/changes/<slug>/` with proposal.md, spec.md (ADDED /
    MODIFIED / REMOVED requirement deltas with testable scenarios), and
-   tasks.md (checkbox ledger with owner agents and proving tests).
+   tasks.md (checkbox ledger with owner agents and proving tests). Run
+   `node .claude/army/scripts/validate-change.mjs <folder>` and fix findings
+   BEFORE showing the user anything; humans approve valid specs only.
 3. HUMAN GATE: show proposal.md to the user and get approval before any
    implementation. Never skip this even when confidence is high. On
-   approval, add `Status: approved (user, <date>)` to proposal.md, then run
-   `node .claude/army/scripts/validate-change.mjs <folder>` and fix any
-   findings before implementation starts.
-4. On approval, apply tasks top to bottom (failing test, implement, green,
-   tick), gating per the doctrine. When all boxes are ticked and review
-   passes, archive the folder and merge deltas into `.claude/army/specs/`.
+   approval, add `Status: approved (user, <date>)` to proposal.md.
+4. Hand off, do not implement here: /army:plan slices the approved change
+   (refining tasks.md from the plan), then /army:loop drives implementation.
+   Archival (merge deltas into `.claude/army/specs/`) happens at the loop's
+   done exit.

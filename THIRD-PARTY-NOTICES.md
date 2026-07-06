@@ -3,10 +3,12 @@
 ## mattpocock/skills
 
 The skills under `skills/mp-*` are vendored from
-https://github.com/mattpocock/skills (commit 16a2a5cd, 2026-07-06), with two
-modifications: skill names and cross-references are namespaced with the
-`mp-` prefix to avoid collisions, and an attribution comment is added after
-each frontmatter block. All other content is unmodified. The full upstream
+https://github.com/mattpocock/skills (commit 16a2a5cd, 2026-07-06), with
+three modifications: skill names and cross-references are namespaced with
+the `mp-` prefix to avoid collisions, an attribution comment is added after
+each frontmatter block, and one compatibility fix (an upstream
+`subagent_type=Explore` reference changed to `general-purpose`, which exists
+in this environment). All other content is unmodified. The full upstream
 collection, including his tracker-backed triage/to-prd/to-issues/implement
 pipeline, is installable via `npx skills@latest add mattpocock/skills`.
 
