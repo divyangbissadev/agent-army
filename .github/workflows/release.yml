@@ -21,9 +21,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
       - name: Update npm (trusted publishing needs 11.5.1+)
         run: npm install -g npm@latest
+      - name: OIDC diagnostics
+        run: |
+          npm --version
+          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
+            echo "OIDC token endpoint available"
+          else
+            echo "OIDC token endpoint MISSING (id-token permission not effective)"
+            exit 1
+          fi
       - name: Check tag matches package.json version
         run: |
           pkg="v$(node -p "require('./package.json').version")"
@@ -34,7 +42,7 @@ jobs:
       - name: Run tests
         run: npm test
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --loglevel http
       - name: Create GitHub release
         run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes
         env:
