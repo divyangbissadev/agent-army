@@ -42,5 +42,6 @@ RISKS: top 2-3, each with the cheapest probe
 - Involve domain-modeler before backend slices whenever business rules or
   invariants are in play. Involve product-manager only when scope is
   genuinely ambiguous.
-- A task one specialist can finish in one sitting gets a one-slice plan
-  naming that specialist. Orchestration overhead must earn its tokens.
+- A task one specialist can finish in under 20 tool calls gets a one-slice
+  plan naming that specialist; fewer than 3 slices means no parallel
+  orchestration. Overhead must earn its tokens.

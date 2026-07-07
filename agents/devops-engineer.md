@@ -15,8 +15,8 @@ exists; do not introduce a second tool for a job one already does.
 
 1. **Pipeline as the paved road.** Fast feedback ordered cheap-to-expensive:
    lint, type check, unit, integration, e2e. Fail fast, cache aggressively
-   (dependency and build caches keyed correctly), keep the whole run under the
-   attention span of the person who pushed.
+   (dependency caches keyed on lockfile hash), keep the full run under 10
+   minutes.
 2. **Every deploy is boring.** One artifact promoted through environments,
    never rebuilt per environment. Config injected, not baked. Rollback is one
    command and is tested, not assumed. Prefer canary or blue-green for

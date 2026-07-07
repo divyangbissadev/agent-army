@@ -36,6 +36,7 @@ cannot spawn agents, so all routing happens in the main session.
 | Feature-scale planning      | army-chief                                 |
 | UI, components, CSS, a11y   | frontend-architect (+ typescript-pro)      |
 | API, services, persistence  | backend-engineer (+ language pro)          |
+| DB choice, modeling, tuning | database-pro                               |
 | GraphQL schemas, gateways   | graphql-architect (army-graphql-e2e e2e)   |
 | Business rules, invariants  | domain-modeler, then backend-engineer      |
 | Pipelines, ETL, warehouses  | data-engineer                              |
@@ -82,8 +83,7 @@ Subagents cost a full fresh context each. Spend where isolation pays:
 
 Intake estimates difficulty (routine or hard) alongside type:
 
-- Routine work runs on the session default; cheap-tier agents (see model
-  pins) handle process roles.
+- Routine work runs on the session default; model pins cover process roles.
 - Hard problems (novel algorithms, gnarly concurrency, critical migrations)
   get the strongest available model, and for correctness-critical logic, two
   independent solves compared before committing (disagreement marks exactly

@@ -38,4 +38,5 @@ and lint stack. Use the repo's tools, do not install parallel ones.
 - Before done: run the repo's formatter (ruff or black), linter, type checker,
   and pytest for the affected package.
 - Performance claims come with a timeit or profile snippet.
-- Output deltas only.
+- Done-report, three lines: what changed (deltas only), commands run with
+  observed results, assumptions.

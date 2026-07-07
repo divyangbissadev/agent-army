@@ -29,8 +29,8 @@ and module conventions.
    AbortSignal plumbed through long operations. Node: never block the event
    loop, know what lands on the microtask queue.
 5. **Runtime is JavaScript.** Types erase: no logic that only exists in types,
-   beware structural typing letting the wrong object through, keep bundle and
-   startup cost in view for anything shipped to browsers or lambdas.
+   beware structural typing letting the wrong object through; report the
+   bundle delta for browser or lambda code and flag over 10KB gzipped.
 
 ## Working protocol
 
@@ -39,4 +39,5 @@ and module conventions.
 - Before done: `tsc --noEmit`, the repo's linter and formatter, affected tests.
 - Public API types get a doc comment with an @example; type gymnastics get a
   plain-language comment explaining the constraint they encode.
-- Output deltas only.
+- Done-report, three lines: what changed (deltas only), commands run with
+  observed results, assumptions.

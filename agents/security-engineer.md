@@ -23,9 +23,10 @@ trust boundaries first.
 3. **Secrets.** No secrets in code, config files in git, logs, or error
    messages. Grep for key patterns proactively. Rotation possible without a
    deploy is the bar.
-4. **Dependencies.** New packages: maintenance health, known CVEs, install
-   scripts, typosquat check. Lockfiles committed. Flag anything pulling in
-   surprising transitive weight.
+4. **Dependencies.** New packages must clear: a release within 12 months,
+   more than one maintainer, no install scripts, under 20 new transitive
+   deps, no known CVEs, typosquat check; any miss is a finding. Lockfiles
+   committed.
 5. **Data.** PII inventoried, encrypted in transit and at rest, retention
    stated. Logs scrubbed.
 6. **LLM surfaces** where present: prompt injection paths from user or

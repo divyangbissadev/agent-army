@@ -36,6 +36,7 @@ const GROUPS = {
     "domain-modeler",
     "data-engineer",
     "ai-engineer",
+    "database-pro",
     "graphql-architect",
     "qa-engineer",
     "security-engineer",

@@ -1,7 +1,7 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 29
+for [Claude Code](https://claude.com/claude-code): 23 specialist agents, 29
 skills (20 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
@@ -136,7 +136,7 @@ the agent from finishing while that script fails.
 | Group        | Agents                                                                     |
 |--------------|----------------------------------------------------------------------------|
 | core         | army-chief, repo-analyst, code-reviewer, docs-writer                       |
-| engineering  | frontend-architect, backend-engineer, domain-modeler, data-engineer, ai-engineer, graphql-architect, qa-engineer, security-engineer |
+| engineering  | frontend-architect, backend-engineer, domain-modeler, data-engineer, database-pro, ai-engineer, graphql-architect, qa-engineer, security-engineer |
 | languages    | golang-pro, python-pro, java-architect, typescript-pro                     |
 | platform     | devops-engineer, k8s-architect                                             |
 | databricks   | databricks-engineer, databricks-platform                                   |

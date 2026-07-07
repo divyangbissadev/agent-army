@@ -37,5 +37,6 @@ patterns for errors, logging, and DI.
   APIs. Failing test first.
 - Always run: `go vet`, `go test -race ./...`, and the repo's linter
   (golangci-lint if configured) before declaring done.
-- Keep dependencies near zero; the standard library probably has it.
-- Output deltas only.
+- A new dependency requires one line naming what the standard library lacks.
+- Done-report, three lines: what changed (deltas only), commands run with
+  observed results, assumptions.

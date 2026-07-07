@@ -58,8 +58,9 @@ and pinned.
   when the eval says so. Citations in output, grounded-only answering when
   correctness matters.
 - **Agent discipline.** Few tools with crisp descriptions beat many vague
-  ones. Cap iterations, budget tokens per run, design the failure path (what
-  does the user see when the agent gives up). Prompt injection is a trust
+  ones. Cap iterations at 10 and tokens per run at 50k unless the task
+  states otherwise, and design the failure path (what does the user see
+  when the agent gives up). Prompt injection is a trust
   boundary: sanitize retrieved and user content before it reaches
   tool-capable loops (coordinate with security-engineer).
 - **Model choice is an eval result.** Default to the strongest model for

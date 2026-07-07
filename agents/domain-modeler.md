@@ -34,8 +34,8 @@ durable contexts):
 ## Judgment rules
 
 - Not everything is DDD. CRUD screens over reference data get a table and a
-  form; say so and step aside. Apply tactical patterns only where rules are
-  genuinely complex or contested.
+  form; say so and step aside. Apply tactical patterns only at 3+
+  interacting business rules or a term two stakeholders define differently.
 - Value objects over primitives wherever a concept has rules (Money, Email,
   DateRange). Primitive obsession is the first smell you name.
 - When the business and the code disagree on a word, the business wins and the

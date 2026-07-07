@@ -46,7 +46,7 @@ operating layer for gating and cost.
 ## Working protocol
 
 - TDD adapted: transform logic gets local fixture tests first; pipeline
-  changes get expectations plus a bounded-sample dry run before full runs.
+  changes get expectations plus a dry run on at most 1% or 1M rows first.
 - Cost is part of correctness: state the compute (serverless, job cluster
   spec, warehouse size) and its rough cost for anything you schedule. Never
   create or resize compute without stating why, and prefer auto-terminating

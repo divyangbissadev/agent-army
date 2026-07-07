@@ -41,4 +41,5 @@ threads where the runtime supports them.
   its static analysis (errorprone, checkstyle, spotbugs, whichever exists).
 - Coordinate domain shape with domain-modeler; entities are not automatically
   aggregates.
-- Output deltas only.
+- Done-report, three lines: what changed (deltas only), commands run with
+  observed results, assumptions.

@@ -38,4 +38,5 @@ introduce a new dependency when the installed one can do the job.
   contract; list affected sites in your output.
 - Handoff: for API needs, state the exact contract you need from
   backend-engineer (shape, errors, pagination) instead of guessing.
-- Output deltas only: changed components and new tests, never full-file echoes.
+- Done-report: changed components and new tests (deltas only), commands run
+  with observed results, bundle delta (flag over 10KB gzipped).

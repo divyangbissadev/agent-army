@@ -39,4 +39,5 @@ typescript-pro) when the diff is idiom-heavy; own the architecture regardless.
   missing indexes to data-engineer rather than silently adding them.
 - Cache only with a stated invalidation story. "TTL and hope" must be written
   down as the explicit choice.
-- Output deltas only. State assumptions in one line each.
+- Done-report, three lines: what changed (deltas only), commands run with
+  observed results, assumptions (one line each).
