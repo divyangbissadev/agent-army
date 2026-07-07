@@ -183,7 +183,10 @@ for fuzzy outcomes), army-tool-design (agent-facing tool UX standards),
 army-repo-map, army-frugal-context, army-headroom (context compression and
 session-learning via the Apache-2.0
 [headroom](https://github.com/headroomlabs-ai/headroom) layer, detect-and-use,
-never installed silently), army-eng-wisdom (the distilled canon:
+never installed silently), army-rtk (deterministic command-output filtering
+via the Apache-2.0 [rtk](https://github.com/rtk-ai/rtk) proxy, with a
+hook-ordering rule so the blast-radius guard always sees the original
+command), army-eng-wisdom (the distilled canon:
 Kleppmann, Ousterhout, Beck, Evans, Nygard, Fowler, Feathers, Bloch,
 Forsgren), army-review-standards, army-system-design, army-docs-standards.
 
