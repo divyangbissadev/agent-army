@@ -44,6 +44,24 @@ A page mixing jobs gets split. A doc set missing a type has a named gap.
 - **Commit message**: first line under 72 chars stating the why-shaped what;
   body explains why, links the issue. No attribution trailers.
 
+## Agent-facing prose (prompts, skill bodies, tool descriptions)
+
+Prose a model consumes follows the universal rules plus:
+
+7. Triggers are concrete situations, not judgments. "Search when the query
+   names a product you do not recognize" beats "search when appropriate";
+   a condition the reader can check cannot be misjudged.
+8. Hard limits read as checkable rules, then a self-check. State the limit
+   with a number or an observable ("quotes under 15 words, one per source"),
+   then close the section with 2-4 questions the agent asks itself before
+   declaring the step done.
+9. Escalate specificity in order: principle, then rules, then examples,
+   then edge cases. Each layer resolves ambiguity the previous one left,
+   and a reader stops as soon as their case is covered.
+10. Every ambiguous behavior gets a paired good and bad example, each with
+    one line on why. A lone good example teaches the happy path; the bad
+    one marks the boundary.
+
 ## Maintenance
 
 Docs change in the same diff as the behavior they describe, or the diff fails

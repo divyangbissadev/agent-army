@@ -19,7 +19,10 @@ dead-end instead of teach.
 2. **Descriptions are onboarding docs.** Write each as if briefing a new
    hire: what it does, when to use it (and when NOT to), one concrete
    example call. Trigger phrasing ("Use when...") beats capability phrasing
-   ("Can do...").
+   ("Can do..."), and triggers name checkable situations ("use when the
+   query names a version you do not recognize"), never judgments ("use
+   when appropriate"). For any call the model gets wrong both ways, pair
+   one good and one bad example with a line on why each.
 3. **Parameters make illegal calls unrepresentable.** Enums over free
    strings, required over optional-with-footguns, defaults that are safe.
    A parameter the model routinely gets wrong is a design bug, not a model
