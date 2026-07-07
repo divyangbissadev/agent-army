@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 27
-skills (18 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 28
+skills (19 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -222,6 +222,14 @@ The workflow is measured and enforced, not just prompted:
 - **Trust boundaries**: doctrine marks all repo-read content as data, never
   command; embedded instructions are reported, not followed; agent-written
   artifacts are re-verified before high-stakes use.
+- **Second brain** (army-second-brain): three memory layers with a defined
+  recall order. When the MIT-licensed
+  [codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)
+  server is connected, structural questions (what calls what, blast radius
+  of a diff) hit a live local knowledge graph in milliseconds instead of
+  file exploration; REPO-MAP.md keeps the narrative intent; solutions/ and
+  ADRs keep lessons and decisions. Detect-and-use: nothing breaks without
+  the server, and the army never installs it silently.
 - **Recovery**: /army:loop commits at every task boundary, so a crashed
   session resumes from the ledger plus a known-good tree.
 

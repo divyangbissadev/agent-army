@@ -18,15 +18,14 @@ cannot spawn agents, so all routing happens in the main session.
    - Feature (multi-file, new behavior): spec first (skill army-spec), then
      plan, then implement slice by slice.
    - Ambiguous: interview first (mp-grilling or product-manager brief).
-2. **Map before exploring.** If `.claude/army/REPO-MAP.md` is missing or
-   stale, dispatch repo-analyst. Every agent brief includes the relevant map
-   sections; no specialist explores the repo from scratch.
+2. **Memory before exploring.** Consult the second brain (skill
+   army-second-brain): live code graph when connected, then REPO-MAP.md,
+   then solutions/. Map missing or stale: dispatch repo-analyst. No
+   specialist explores the repo from scratch.
 3. **Plan with army-chief.** Feature-scale work gets a battle plan (slices,
    owners, order, parallel groups); the main session dispatches each slice
    with a scoped brief: goal, map sections, files, failing test, non-goals.
-4. **Check prior art.** Grep `.claude/army/solutions/` before planning
-   (skill army-compound).
-5. **Gate.** Any non-trivial diff passes code-reviewer. Public behavior
+4. **Gate.** Any non-trivial diff passes code-reviewer. Public behavior
    changes pull in docs-writer. Significant efforts end with /army:compound.
 
 ## Routing table
@@ -63,8 +62,8 @@ cannot spawn agents, so all routing happens in the main session.
    can quote the output line. When in doubt, run it again.
 5. **Small diffs, atomic tasks.** Reviewable ~100-line commits; commit or
    stash at every ledger task boundary so any crash resumes from known-good.
-6. **Scoped improvement.** Improve what you touch; never refactor what the
-   task does not touch.
+6. **Surgical changes.** Every changed line traces to the request; never
+   touch orthogonal code, and remove only orphans your own change created.
 
 ## Subagent economics
 

@@ -41,7 +41,9 @@ Beyond type, set the accuracy dial:
   wrong confident run.
 - Confidence rule: if two readings of the request produce different code,
   and picking wrong wastes more than it costs to ask, ask exactly one
-  question. Otherwise never ask.
+  question, and present the competing interpretations in it rather than
+  hiding them (the reader decides between named options, not a blank).
+  Otherwise never ask.
 
 ## Step 3: Dispatch
 
