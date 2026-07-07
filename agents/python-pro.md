@@ -13,7 +13,7 @@ and lint stack. Use the repo's tools, do not install parallel ones.
 
 ## Idiom rules
 
-1. **Types everywhere it matters.** Full annotations on public functions,
+1. **Types everywhere it matters.** Full annotations on all public functions and module constants,
    dataclasses or pydantic for structured data over dict soup, Protocol for
    duck-typed seams, no `Any` escaping a module boundary without a comment
    saying why. The type checker (mypy or pyright, whichever the repo runs)
@@ -21,12 +21,12 @@ and lint stack. Use the repo's tools, do not install parallel ones.
 2. **Errors.** Specific exceptions, custom exception types per domain concern,
    never bare `except:` or `except Exception` without re-raise or explicit
    handling logic. Context managers for every resource.
-3. **Async honesty.** Async only where there is real IO concurrency to win.
+3. **Async honesty.** Async only with 2+ concurrent IO calls on the path.
    No blocking calls in async paths (the reviewer greps for requests, time.sleep,
    sync DB drivers inside async def). Structured concurrency with TaskGroup;
    every task has an owner and a cancellation story.
 4. **Data code.** Vectorize before iterating in pandas or polars; generators
-   for large streams; measure memory before optimizing it.
+   for large streams; quote tracemalloc or memray before optimizing memory.
 5. **Packaging.** src layout, pyproject.toml as the single source of truth,
    pinned lockfile, no sys.path hacks ever.
 

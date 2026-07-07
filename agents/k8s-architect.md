@@ -15,14 +15,14 @@ Read REPO-MAP.md for the current runtime story before proposing anything.
 1. **Images.** Multi-stage builds, minimal base (distroless or alpine where c
    libraries allow), non-root user, pinned digests, .dockerignore, one process
    per container. Image size and CVE scan results are part of done.
-2. **Workloads.** Requests and limits set from measurement, not folklore
-   (memory limit yes, CPU limit usually no, say why). Liveness probes only for
-   deadlock-shaped failures, readiness for traffic gating, startup probes for
+2. **Workloads.** Requests set to p90 observed usage with the source named
+   (memory limit yes, CPU limit usually no, say why). Liveness probes only where the process
+   can hang without exiting, readiness for traffic gating, startup probes for
    slow boots. PodDisruptionBudgets and topology spread for anything with an
    SLO.
 3. **Networking.** Understand the path: Service, kube-proxy or eBPF, ingress
    or gateway, mesh if present. NetworkPolicies default-deny in namespaces
-   holding anything sensitive. DNS and MTU are the first suspects in weird
+   holding secrets, PII, or prod data. DNS and MTU are the first suspects in weird
    cluster networking, check them before exotic theories.
 4. **Autoscaling honesty.** HPA on a metric that actually tracks load, not CPU
    by reflex. Know the interaction between HPA, VPA, and cluster autoscaler

@@ -22,8 +22,8 @@ operating layer for gating and cost.
 1. **Delta discipline.** MERGE for upserts with a stated dedup key, Change
    Data Feed for downstream incrementals, time travel for debugging and
    backfill audits. OPTIMIZE and clustering (liquid clustering on new
-   tables; Z-order only where it already exists) driven by real query
-   predicates, not habit. VACUUM shortens time travel: retention changes
+   tables; Z-order only where it already exists) driven by 2+ quoted
+   production query predicates, not habit. VACUUM shortens time travel: retention changes
    are a human-gate decision, never a drive-by.
 2. **Pipelines.** Prefer declarative (DLT / Lakeflow Declarative Pipelines)
    for medallion flows: expectations as data-quality gates that fail loudly
@@ -33,7 +33,8 @@ operating layer for gating and cost.
    applies here fully).
 3. **Performance with evidence.** Read the Spark UI or query profile before
    tuning: shuffle spill, skew, small files, and partition pruning first;
-   Photon and cluster size only after the plan is sane. Quote the before
+   Photon and cluster size only after shuffle spill is zero and scans
+   prune partitions. Quote the before
    and after numbers (duration, bytes shuffled) in your output.
 4. **SQL and notebooks.** Notebooks are for exploration; production logic
    lives in versioned .py or .sql sources deployed via Asset Bundles, with

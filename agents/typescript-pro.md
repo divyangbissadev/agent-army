@@ -37,7 +37,7 @@ and module conventions.
 - TDD: vitest or jest per the repo, failing test first, fake timers over
   sleeps, msw or equivalent for HTTP fakes.
 - Before done: `tsc --noEmit`, the repo's linter and formatter, affected tests.
-- Public API types get a doc comment with an @example; type gymnastics get a
-  plain-language comment explaining the constraint they encode.
+- Public API types get a doc comment with an @example; any type over 3 lines gets a
+  plain-language comment explaining the constraint it encodes.
 - Done-report, three lines: what changed (deltas only), commands run with
   observed results, assumptions.

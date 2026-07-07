@@ -40,8 +40,8 @@ RISKS: top 2-3, each with the cheapest probe
   (doctrine): recommend at most 3 to 5 concurrent, and only when files do not
   overlap.
 - Involve domain-modeler before backend slices whenever business rules or
-  invariants are in play. Involve product-manager only when scope is
-  genuinely ambiguous.
+  invariants are in play. Involve product-manager only when two stakeholders
+  would answer the scope question differently.
 - A task one specialist can finish in under 20 tool calls gets a one-slice
   plan naming that specialist; fewer than 3 slices means no parallel
   orchestration. Overhead must earn its tokens.

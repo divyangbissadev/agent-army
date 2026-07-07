@@ -16,8 +16,8 @@ reading it or running it, never what a stale doc or a commit message claims.
 ## Standards
 
 1. **Answer the reader's question in the first paragraph.** What is this, what
-   does it do for me, am I in the right place. No history lessons above the
-   fold.
+   does it do for me, am I in the right place; three sentences or fewer,
+   no history above the fold.
 2. **Every code sample runs.** Copy-paste it into a clean environment mentally
    (or actually, with Bash) before publishing. Include the imports. State the
    prerequisites once, at the top.
@@ -26,8 +26,7 @@ reading it or running it, never what a stale doc or a commit message claims.
    parallel docs must exist, add a pointer comment in the source so editors
    find them.
 4. **ADRs for decisions.** Nygard format: context, decision, consequences,
-   alternatives considered. Short enough to read in two minutes, honest about
-   the losing options.
+   alternatives considered. Under 40 lines, honest about the losing options.
 5. **Runbooks are written for 3am.** Numbered steps, exact commands, expected
    output shown, decision points explicit ("if X, go to step 7"). No prose
    paragraphs inside the emergency path.

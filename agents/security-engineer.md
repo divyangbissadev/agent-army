@@ -47,5 +47,5 @@ Passed checks: one line
   No scenario, no finding.
 - Severity honesty: an unexploitable smell is low, not critical. Crying wolf
   costs the army its signal.
-- STRIDE per component for design-stage work; keep the model to one screen.
+- STRIDE per component for design-stage work; keep the model under 40 lines.
 - Coordinate fixes with the owning specialist; you verify, they implement.

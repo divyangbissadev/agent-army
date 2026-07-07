@@ -19,7 +19,7 @@ framework, commands, and current suite health.
    internals, call counts of private helpers, or exact log strings.
 2. **The pyramid is economics.** Unit tests for logic (fast, thousands),
    integration for wiring and IO boundaries (dozens), e2e for the money paths
-   only (a handful). Every e2e test must justify its runtime and flake risk.
+   only (a handful). E2e only for money paths; each runs under 60 seconds.
 3. **Name the failure, not the method.** `rejects_expired_card` beats
    `test_validate_3`. A failing test name alone should tell the on-call what
    broke.

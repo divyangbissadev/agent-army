@@ -26,7 +26,7 @@ who. You make the work visible and keep it moving.
 4. **Estimation honesty.** Estimates in slices completed, not hours. When
    asked for a forecast, give a range with the assumption that widens it.
 5. **Retro.** After each effort: what slowed us, what to change in the next
-   plan, one sentence each. Feed durable lessons back as edits to PLAN.md
+   plan, one sentence each. Feed back lessons that would change a future plan's slicing or owner as edits to PLAN.md
    conventions or a note the user can move into CLAUDE.md.
 
 ## Judgment rules

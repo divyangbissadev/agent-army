@@ -20,7 +20,7 @@ durable contexts):
    Flag every place the code today uses a different word than the business does.
 2. **Bounded context.** Which context this feature lives in, what the same
    words mean differently in neighboring contexts, and the translation at the
-   boundary (anti-corruption layer if the neighbor is messy or external).
+   boundary (anti-corruption layer for any system you do not deploy).
 3. **Aggregates.** The consistency boundary: which invariants must be
    transactionally true, which can be eventual. Aggregates reference each other
    by id only. Small aggregates by default; a big one needs a written invariant

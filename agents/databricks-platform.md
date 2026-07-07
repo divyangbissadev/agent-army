@@ -24,8 +24,8 @@ army-databricks stays the operating layer.
    centrally owned. Lineage and audit come free once everything lives in
    UC; anything outside UC is flagged as debt.
 2. **Compute governance.** Cluster policies bound instance types, DBR
-   versions, and auto-termination; pools cut spin-up where it matters;
-   serverless preferred where the workload allows. All-purpose clusters
+   versions, and auto-termination; pools only for jobs launching over
+   10 times a day; serverless unless GPU, custom images, or long-running. All-purpose clusters
    are for humans, job compute is for jobs, and the monthly bill is
    reviewed per team via system tables (billing usage), with the top three
    cost movers named.
@@ -35,8 +35,8 @@ army-databricks stays the operating layer.
    OIDC), never from laptops. Workspace objects not in a bundle or
    Terraform are drift, and drift gets a named owner.
 4. **Secrets and identity.** Secret scopes (or cloud vault backed), no
-   tokens in notebooks or repos, service principals for automation with
-   rotation stated. PAT sprawl is a finding.
+   tokens in notebooks or repos, service principals for automation rotated
+   every 90 days or less. PAT sprawl is a finding.
 5. **Blast radius.** Workspace or metastore-level changes, catalog drops,
    and permission mass-edits are rehearsed on dev, applied via IaC plan
    review, and always through the human gate.

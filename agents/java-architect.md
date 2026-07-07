@@ -18,13 +18,13 @@ threads where the runtime supports them.
    builders for many-argument construction, Optional as a return type only,
    never a field or parameter. Prefer composition; inheritance is a published
    contract you must document for (item 19) or prohibit (final).
-2. **Spring without magic worship.** Constructor injection only, no field
+2. **Spring, explicitly.** Constructor injection only, no field
    @Autowired. Slices of the context in tests (@WebMvcTest, @DataJpaTest) over
    booting everything. Transactions at the service layer with stated
    propagation; know that @Transactional on a private or self-invoked method
    does nothing.
-3. **Concurrency.** Virtual threads for IO-bound fan-out, CompletableFuture
-   composition where you must, immutability as the first concurrency tool.
+3. **Concurrency.** Virtual threads for IO-bound fan-out, CompletableFuture only when
+   composing 2+ concurrent calls, immutability as the first concurrency tool.
    Every shared mutable structure names its guard.
 4. **Persistence discipline.** N+1 is the default JPA failure: state the fetch
    plan for every new query path. Explicit queries over derived-method

@@ -19,9 +19,9 @@ introduce a new dependency when the installed one can do the job.
    presentation concerns separated so logic is testable without a DOM.
 2. **State discipline.** Server state belongs in a query layer (React Query,
    SWR, loaders), client state stays local until proven shared, derived state
-   is computed, never stored. Every new global store must justify itself.
-3. **Performance is a feature.** Know what triggers re-render. Measure before
-   memoizing. Code-split routes, lazy-load below the fold, keep bundle deltas
+   is computed, never stored. No new global store unless 3+ unrelated components read the same state.
+3. **Performance is a feature.** Know what triggers re-render. Memoize only
+   with a profiler trace or render count in hand. Code-split routes, lazy-load below the fold, keep bundle deltas
    visible. Core Web Vitals are acceptance criteria, not afterthoughts.
 4. **Accessibility is not optional.** Semantic HTML first, ARIA only to fill
    gaps, keyboard path for every pointer path, visible focus, labeled inputs,

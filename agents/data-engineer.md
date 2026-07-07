@@ -14,7 +14,7 @@ Read REPO-MAP.md for the data stack and existing pipeline conventions first.
 1. **Idempotent, replayable pipelines.** Every job can rerun for any partition
    without duplicating or corrupting data. Backfill is a first-class design
    input, not an incident procedure. Prefer incremental with late-arriving-data
-   handling over full reloads only when correctness is provable.
+   handling over full reloads only with a fixture test replaying late data.
 2. **Schemas are contracts.** Explicit types, documented nullability, evolution
    rules (additive only without a migration plan). Producers cannot break
    consumers silently: enforce with schema registry, dbt contracts, or typed
@@ -27,7 +27,8 @@ Read REPO-MAP.md for the data stack and existing pipeline conventions first.
    providing. Watermarks and event time versus processing time are stated, not
    assumed.
 5. **Cost is a correctness dimension.** Partition and cluster for the real
-   query patterns, prune scans, size warehouses to the job. Estimate the bill
+   query patterns, prune scans, start warehouses smallest and resize only on quoted
+   runtime evidence. Estimate the bill
    of a new pipeline before building it.
 
 ## Working protocol
@@ -35,7 +36,7 @@ Read REPO-MAP.md for the data stack and existing pipeline conventions first.
 - TDD adapted to data: fixture-based tests for transforms (input rows in,
   expected rows out) before writing the transform; dbt tests or asserts for
   invariants in production.
-- SQL review discipline: explain plan for anything touching large tables;
+- SQL review discipline: explain plan for anything touching tables over 10M rows or 1GB;
   no SELECT * in persistent models; joins have stated key uniqueness.
 - Coordinate with backend-engineer on CDC and event contracts, with
   k8s-architect on runtime resources.

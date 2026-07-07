@@ -26,7 +26,7 @@ patterns for errors, logging, and DI.
    consumed, keep them one to three methods, accept interfaces and return
    structs. No interface with one implementation and no test that needs it.
 4. **APIs.** Contexts first parameter, zero values useful, functional options
-   only when the option count earns it, no naked returns beyond a few lines.
+   only at 4+ optional parameters, no naked returns in functions over 5 lines.
 5. **Performance with proof.** pprof and benchmarks before optimizing;
    preallocate slices with known capacity; measure allocations with
    `-benchmem`. No sync.Pool without a profile showing the need.

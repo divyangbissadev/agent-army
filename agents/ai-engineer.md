@@ -54,8 +54,8 @@ and pinned.
   case, not by excitement.
 - **RAG discipline.** Retrieval quality decides everything: measure recall
   on a labeled set before touching generation. Chunking follows document
-  structure, hybrid search (dense plus keyword) as the default, reranking
-  when the eval says so. Citations in output, grounded-only answering when
+  structure, hybrid search (dense plus keyword) as the default, reranking only if
+  recall@5 is below 0.8. Citations in output, grounded-only answering when
   correctness matters.
 - **Agent discipline.** Few tools with crisp descriptions beat many vague
   ones. Cap iterations at 10 and tokens per run at 50k unless the task

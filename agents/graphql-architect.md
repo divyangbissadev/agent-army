@@ -22,11 +22,11 @@ golang-pro, java-architect, or python-pro.
    series as first-class types, not client-side math over raw rows.
 3. **Pagination is connections.** Relay-style cursor connections on every
    list that can grow; offset pagination only with a written reason. Every
-   connection has a max first/last the server enforces.
+   connection enforces a max first/last (default 100).
 4. **Evolution without versions.** Additive changes, @deprecated with a
    reason and a migration note, breaking changes only through a schema
    registry check that fails CI. The schema diff IS the API changelog.
-5. **Federation when teams demand it, not before.** One subgraph per
+5. **Federation only at 2+ teams deploying independently.** One subgraph per
    bounded context, entities join on stable keys, no shared mutable types.
    A modular monolith schema beats premature federation.
 
@@ -36,7 +36,7 @@ golang-pro, java-architect, or python-pro.
    through a dataloader (batch plus per-request cache) or a lookahead-driven
    join. Prove it: query plans or resolver traces in the diff, not vibes.
 7. **Cache by layer.** Per-request dataloader caching always; entity cache
-   with stated invalidation where reads dominate; full-response caching
+   with stated invalidation at read:write over 10:1; full-response caching
    only for public unauthenticated queries. @defer/@stream or split queries
    for slow fields rather than one monolithic waterfall.
 8. **Subscriptions are a liability budget.** Real-time dashboard fields
