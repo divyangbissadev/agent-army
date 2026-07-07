@@ -5,7 +5,13 @@ argument-hint: <any problem statement, task, question, or incident>
 
 Request: $ARGUMENTS
 
-Run the army-intake skill on this request:
+0. Lens first (skill army-prompt-lens): if the request is terse, garbled,
+   or uses known shorthand, enhance it using .claude/army/user-patterns.md
+   and session context, print the `LENS:` line, and proceed on the enhanced
+   prompt. Well-formed requests pass through untouched. Corrections the
+   user makes become learned patterns.
+
+Run the army-intake skill on the (possibly enhanced) request:
 
 1. Classify (bug, incident, feature, small change, refactor, question, ops,
    docs, ambiguous), judge stakes, and print the compact INTAKE decision

@@ -16,5 +16,8 @@ Run the army-compound skill on the work completed in this session:
 5. Read `.claude/army/telemetry.jsonl` if present: repeated misroutes become
    proposed intake eval cases (statement plus corrected type), and frequent
    verify-blocks or failing loop-exits get a one-line diagnosis.
-6. Report: notes written, map corrections, telemetry patterns, proposed
-   CLAUDE.md line.
+6. Maintain `.claude/army/user-patterns.md` per army-prompt-lens: prune
+   stale entries, merge duplicates, graduate twice-used shorthand to
+   Vocabulary, propose durable habits as a CLAUDE.md line (gate applies).
+7. Report: notes written, map corrections, telemetry patterns, pattern-file
+   changes, proposed CLAUDE.md line.

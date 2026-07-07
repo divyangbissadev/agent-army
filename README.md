@@ -1,8 +1,8 @@
 # agent-army
 
 An elite, pluggable team of software engineering agents, skills, and commands
-for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 28
-skills (19 army doctrine skills plus 9 vendored from Matt Pocock's skills
+for [Claude Code](https://claude.com/claude-code): 22 specialist agents, 29
+skills (20 army doctrine skills plus 9 vendored from Matt Pocock's skills
 collection), and 7 slash commands. The team operates on TDD,
 domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
@@ -79,10 +79,15 @@ directly ("use the k8s-architect to fix the OOMKills").
 
 ## The workflow
 
-One front door: give `/army:go <anything>` a problem statement and the
-army-intake skill classifies it (bug, incident, feature, small change,
-refactor, question, ops, docs, ambiguous), picks the ceremony tier, prints
-its dispatch decision, and executes the matching flow. Ceremony scales with
+One front door: give `/army:go <anything>` a problem statement, rough or
+polished. The prompt lens (army-prompt-lens) runs first: it learns your
+query patterns into `.claude/army/user-patterns.md` (shorthand, habits,
+past corrections), enhances terse or garbled prompts into precise ones,
+and shows its interpretation on a `LENS:` line so nothing changes meaning
+silently; corrections you make become learned patterns. Then the
+army-intake skill classifies the enhanced request (bug, incident, feature,
+small change, refactor, question, ops, docs, ambiguous), picks the ceremony
+tier, prints its dispatch decision, and executes the matching flow. Ceremony scales with
 the change: trivial edits just happen; one-behavior changes get TDD plus
 review; feature-scale work runs the full loop:
 
@@ -164,7 +169,8 @@ cloud-agnostic DevOps with a portability rule, and generated-from-SDL
 documentation), built for shipping dashboard backends end to end.
 
 Skills: army-intake, army-tdd, army-ddd, army-debugging, army-spec,
-army-compound, army-cross-review, army-databricks (lakehouse operating
+army-compound, army-cross-review, army-prompt-lens (learns your query
+patterns, enhances rough prompts transparently), army-databricks (lakehouse operating
 protocol), army-eng-docs (planning docs to the Google/Amazon/Stripe bar:
 Requirements, Design Docs, ADRs, One-Pagers, nine reference templates),
 army-graphql-e2e (GraphQL service delivery end to end),
