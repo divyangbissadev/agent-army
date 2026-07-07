@@ -16,7 +16,8 @@
     ".claude-plugin",
     "README.md",
     "THIRD-PARTY-NOTICES.md",
-    "eval"
+    "eval",
+    "GUIDE.md"
   ],
   "scripts": {
     "test": "node --test test/*.test.js",

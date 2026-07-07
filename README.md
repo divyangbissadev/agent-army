@@ -8,6 +8,10 @@ domain-driven design, spec-driven changes, root-cause debugging, and a
 compounding-knowledge loop, with hard token-frugality rules so accuracy stays
 ultimate and cost stays low.
 
+New here? [GUIDE.md](GUIDE.md) is the operator's manual: setup, driving
+the workflow day to day, what to do at each gate, habits that make the
+army compound, extending it, and troubleshooting.
+
 Two install paths, same content:
 
 ## Install as a Claude Code plugin (recommended)
