@@ -26,12 +26,25 @@ jobs:
       - name: OIDC diagnostics
         run: |
           npm --version
-          if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
-            echo "OIDC token endpoint available"
-          else
+          if [ -z "$ACTIONS_ID_TOKEN_REQUEST_URL" ]; then
             echo "OIDC token endpoint MISSING (id-token permission not effective)"
             exit 1
           fi
+          resp=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm%3Aregistry.npmjs.org")
+          printf '%s' "$resp" | node -e '
+            let d = "";
+            process.stdin.on("data", c => d += c).on("end", () => {
+              const jwt = JSON.parse(d).value;
+              const c = JSON.parse(Buffer.from(jwt.split(".")[1], "base64url").toString());
+              const pick = ({repository, repository_owner, repository_id, workflow_ref,
+                             job_workflow_ref, environment, event_name, ref, run_attempt}) =>
+                ({repository, repository_owner, repository_id, workflow_ref,
+                  job_workflow_ref, environment: environment ?? null, event_name, ref, run_attempt});
+              console.log("OIDC claims npm will match against:");
+              console.log(JSON.stringify(pick(c), null, 2));
+            });
+          '
       - name: Check tag matches package.json version
         run: |
           pkg="v$(node -p "require('./package.json').version")"
@@ -43,6 +56,9 @@ jobs:
         run: npm test
       - name: Publish to npm
         run: npm publish --access public --loglevel http
+      - name: Dump npm debug log on failure
+        if: failure()
+        run: grep -ihE 'oidc|exchange|http fetch|error' /home/runner/.npm/_logs/*.log | tail -30
       - name: Create GitHub release
         run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes
         env:
