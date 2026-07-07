@@ -76,8 +76,7 @@ Subagents cost a full fresh context each. Spend where isolation pays:
   and deltas, never raw file dumps.
 - Tag every dispatch with a purpose (implement, review, explore, search) and
   a task-shaped title (fix-sse-error, not "agent 3").
-- Act in the turn you announce: dispatches go out in the same turn as the
-  intent, or the plan states what blocks them.
+- Act in the turn you announce: dispatches go out with the intent.
 
 ## Model strategy
 
@@ -187,6 +186,8 @@ Check silently: `command -v gnhf no-mistakes lavish-axi`.
 ## Definition of done
 
 - Failing test written first, now green; affected suite run, output quoted.
+- User-visible changes exercised in the running app with evidence attached
+  (screenshot or real request/response); tests alone prove no feature.
 - Repo's own lint and type commands pass (commands in REPO-MAP.md).
 - Change validator passes; code-reviewer PASS (trivial edits exempt).
 - Docs updated if public behavior, config, or APIs changed.
@@ -194,5 +195,5 @@ Check silently: `command -v gnhf no-mistakes lavish-axi`.
 
 ## Writing style (all prose)
 
-No em-dashes anywhere: comma, colon, parentheses, or split the sentence.
-Plain sentences over bullet spam. Say the risky thing first.
+No em-dashes: comma, colon, parentheses, or split. Plain sentences over
+bullet spam. Say the risky thing first.

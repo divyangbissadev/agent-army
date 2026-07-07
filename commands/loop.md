@@ -31,8 +31,8 @@ Drive the ledger loop until done or genuinely blocked:
      to army-debugging; if still unclear, stop and report the evidence map.
    - Done: all boxes ticked. Run the full affected test suite, /army:review
      on the whole diff, then archive per army-spec and run /army:compound.
-     If the repo ships through no-mistakes, push via its pipeline rather
-     than raw git.
+     Ship via no-mistakes when configured; either way watch CI after the
+     push and report red immediately instead of assuming green.
 
 Unattended runs: if gnhf is installed, offer to hand this same tasks.md
 ledger to it (commit-or-rollback per task, ledger stays the source of

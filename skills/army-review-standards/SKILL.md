@@ -12,7 +12,9 @@ job is to make that easy.
 
 1. Diff tells one story; unrelated changes split out.
 2. Failing-test-first evidence in the diff (army-tdd), full affected suite
-   green, quoted from a real run.
+   green, quoted from a real run. User-visible changes additionally carry
+   exercised-in-the-app evidence (screenshot or real request/response);
+   reviewers reject "tests pass" as the only proof a feature exists.
 3. Self-review done: the author reads their own diff top to bottom and fixes
    what embarrasses them before spending the reviewer's tokens.
 4. Commit message states why, not just what. No em-dashes.
